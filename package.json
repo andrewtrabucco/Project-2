@@ -11,8 +11,11 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^3.0.0",
+    "handlebars": "^4.7.6",
     "mysql": "^2.16.0",
-    "require": "^2.4.20"
+    "mysql2": "^2.2.5",
+    "require": "^2.4.20",
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "handlebars-helper-css": "^0.1.0"
