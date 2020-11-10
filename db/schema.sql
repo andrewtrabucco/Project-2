@@ -1,4 +1,5 @@
 ### Schema
 
-CREATE DATABASE calorie_db;
-USE calorie_db;
+
+CREATE DATABASE calorieTracker_db;
+

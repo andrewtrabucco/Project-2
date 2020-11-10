@@ -2,7 +2,7 @@ var express = require("express");
 
 var router = express.Router();
 
-// Import the model (cat.js) to use its database functions.
+// Import the model (index.js) to use its database functions.
 var calorie = require("../models/index.js");
 
 // Create all our routes and set up logic within those routes where required.
@@ -16,8 +16,9 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/api/food", function(req, res) {
-  calories.create([
+
+router.post("/api/calories", function(req, res) {
+  calorie.create([
     "foodName", calories
   ], [
     req.body.foodName, req.body.calories
@@ -44,7 +45,7 @@ router.put("/api/calories/:id", function(req, res) {
   });
 });
 
-router.delete("/api/calorie/:id", function(req, res) {
+router.delete("/api/calories/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   calorie.delete(condition, function(result) {
