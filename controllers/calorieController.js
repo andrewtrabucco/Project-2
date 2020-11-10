@@ -3,11 +3,11 @@ var express = require("express");
 var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
-var cat = require("../models/cat.js");
+var calorie = require("../models/cat.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  cat.all(function(data) {
+  calorie.all(function(data) {
     var hbsObject = {
       cats: data
     };
@@ -17,7 +17,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/cats", function(req, res) {
-  cat.create([
+  calorie.create([
     "name", "sleepy"
   ], [
     req.body.name, req.body.sleepy
