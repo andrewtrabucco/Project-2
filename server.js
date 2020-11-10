@@ -19,6 +19,7 @@ app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
 var routes = require("./controllers/calorieController.js");
+require("./htmlRoutes/html-routes.js")(app);
 
 app.use(routes);
 
