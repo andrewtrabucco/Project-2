@@ -1,10 +1,18 @@
 
 let unirest = require("unirest");
-let req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/9266/information");
+let req = unirest("GET", "https://api.spoonacular.com/food/ingredients/search?query=" + foodID + "&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85&includeNutrition=true");
+let req1 = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/" + food + "/information");
+
+
 req.query({
 	"amount": "100",
 	"unit": "gram"
 });
+req1.query({
+	"amount": "100",
+	"unit": "gram"
+});
+
 req.headers({
 	"x-rapidapi-key": "c1efb5fd0f5141858fc5b5f6a6b5ab85",
 	"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
