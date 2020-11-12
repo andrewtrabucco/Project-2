@@ -15,7 +15,6 @@ $("#searchButton").on("click", function (event) {
         url: queryURL,
         method: "GET",
     }).then(function (response) {
-        // debugger;
         console.log(response);
     });
 
