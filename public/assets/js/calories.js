@@ -6,7 +6,8 @@
 // Search Button Functionality (Imputs Text and Calls searchFood Function)
 $("#searchButton").on("click", function (event) {
     event.preventDefault();
-    let food = $("#findtext").val().trim();
+    let food = $("#foodTextEntry").val().trim();
+    // console.log(food);
     let queryURL = "https://api.spoonacular.com/food/ingredients/search?query=" + food + "&sort=calories&sortDirection=desc&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85";
 
 
@@ -15,8 +16,37 @@ $("#searchButton").on("click", function (event) {
         url: queryURL,
         method: "GET",
     }).then(function (response) {
-        // debugger;
         console.log(response);
+        console.log(response.results[0]);
+        console.log(response.results[0].name);
+        console.log(response.results[0].id);
+        console.log(response.results[0].image);
+        // console.log(response[0].name);
+        // console.log(repsonse[0].id);
+        // console.log(response[0].image);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     });
 
 });
