@@ -56,12 +56,11 @@ $("#customButton").on("click", function (event) {
     foodItem.name = $("#customFoodTextEntry").val();
     foodItem.calories = $("#enterCustomCalories").val();
     
-    $.ajax({
-        url: "/api/foods",
-        method: "POST"
-    }).then(function(response) {
+    $.post("api/foods",foodItem).then(function(response) {
         console.log(response);
     });
 });
+
+
 
 
