@@ -51,4 +51,17 @@ $("#searchButton").on("click", function (event) {
 
 });
 
+$("#customButton").on("click", function (event) {
+    var foodItem = {}
+    foodItem.name = $("#customFoodTextEntry").val();
+    foodItem.calories = $("#enterCustomCalories").val();
+    
+    $.ajax({
+        url: "/api/foods",
+        method: "POST"
+    }).then(function(response) {
+        console.log(response);
+    });
+});
+
 
