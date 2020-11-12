@@ -1,6 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
-    var Food = sequelize.define("Food", {
-      calories: DataTypes.STRING
+    let Food = sequelize.define("Food", {
+      name: DataTypes.STRING,
+      calories: DataTypes.STRING,
+      time: DataTypes.STRING
     });
     return Food;
   };
