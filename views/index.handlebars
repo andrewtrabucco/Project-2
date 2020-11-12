@@ -1,33 +1,88 @@
 <section class="hero is-primary">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-1">Calorie Counter<h1>
-      <h2 class="subtitle">Stay Healthy! Stay on Track!</h2>
+      <h1 class="title is-1">Calorie IN vs. Calories OUT<h1>
+          <h2 class="subtitle">Stay Healthy! Stay on Track!</h2>
     </div>
   </div>
 </section>
 
-<div class="columns">
-  <div class="column">
-    <div class="card">
-      <div class="card-content">
-        <h2 class="title">Input Food</h2>
-        <h3 class="subtitle">Returns list of items</h3>
-      </div>
-      <footer class="card-footer">
-        <div class="card-footer-item">
-          <a href="#" class="button is-success">
-            <i class="fa fa-thumbs-o-up"></i>
-          </a>
+<div class="row">
+  <div class="columns">
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title">What have you eaten today?</h2>
+          <h3 class="subtitle">Returns list of items.</h3>
         </div>
-      </footer>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <label for="foodTextEntry">Enter a food here: </label>
+            <input id="foodTextEntry" type="text" />
+            <a href="#" class="button is-success" id="searchButton">
+              <i class="fas fa-thumbs-up"></i>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title">Can't find the food you've searched for?</h2>
+          <h3 class="subtitle">Manually Enter Below.</h3>
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <label for="customFoodTextEntry">Enter a food here: </label>
+            <input id="customFoodTextEntry" type="text" />
+          </div>
+        </footer>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <label for="enterCustomCalories">Enter Caloric Value: </label>
+            <input id="enterCustomCalories" type="text" />
+            <a href="#" class="button is-success" id="customButton">
+              <i class="fas fa-thumbs-up"></i>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title">Calories burned today?</h2>
+          <h3 class="subtitle">Enter the number of Calories you've burned today!</h3>
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <label for="findtext">Enter your calories burned: </label>
+            <input id="findtext" type="text" />
+            <a href="#" class="button is-success" id="caloriesBurnedButton">
+              <i class="fas fa-thumbs-up"></i>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
   </div>
-  <div class="column">2</div>
-  <div class="column">3</div>
 </div>
 
-
-
-{{!-- <label for="findtext">Find: </label>
-<input id="findtext" type="text" />
-<button class="button" id="searchButton"><i class="fa fa-search"></i></button> --}}
+<div class="row">
+  <div class="columns">
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title">Items Searched will appear here: </h2>
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            
+          </div>
+        </footer>
+      </div>
+    </div>
