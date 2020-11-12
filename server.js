@@ -12,14 +12,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Set Handlebars.
-let exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-let routes = require("./Routes/html-routes.js")(app);
-  require("./Routes/api-routes.js")(app);
+var routes = require("./controllers/calorieController.js");
+require("./Routes/html-routes.js")(app);
+require("./Routes/api-routes.js")(app);
 
 app.use(routes);
 
