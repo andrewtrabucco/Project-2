@@ -2,13 +2,13 @@
 
 
 // Search Button Functionality (Imputs text and calls searchFood function)
-$("#searchButton").on("click", function(event) {
+$("#searchButton").on("click", function (event) {
     event.preventDefault();
     let food = $("#foodTextEntry").val().trim();
     // console.log(food);
     let queryURL = "https://api.spoonacular.com/food/ingredients/search?query=" + food + "&sort=calories&sortDirection=desc&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85";
 
-// Rapid API Call
+    // Rapid API Call
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -21,28 +21,27 @@ $("#searchButton").on("click", function(event) {
     });
 });
 
-
-$("#customButton").on("click", function(event) {
+$("#customButton").on("click", function (event) {
     var foodItem = {}
     foodItem.name = $("#customFoodTextEntry").val();
     foodItem.calories = $("#enterCustomCalories").val();
-    
+
     $.ajax({
         url: "/api/foods",
         method: "POST"
-    }).then(function(response) {
+    }).then(function (response) {
         console.log(response);
     });
 });
 
-$("#caloriesBurnedButton").on("click", function(event) {
+$("#caloriesBurnedButton").on("click", function (event) {
     var burnedCalories = {}
     burnedCalories.calories = $("#enterBurnedCalories").val();
-    
+
     $.ajax({
         url: "/api/foods",
         method: "POST"
-    }).then(function(response) {
+    }).then(function (response) {
         console.log(response);
     });
 });

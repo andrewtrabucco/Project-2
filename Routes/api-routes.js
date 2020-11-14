@@ -1,12 +1,23 @@
 // Require models
 let db = require("../models");
 
+const sequelize = require('sequelize');
+
 // Routes
 module.exports = function (app) {
 
     // GET route to get all foods
-    app.get("/api/foods", function (req, res) {
-        db.Food.findAll({}).then(function (dbFood) {
+    app.get("/api/foods/current", function (req, res) {
+        db.Food.findAll({
+            where: {
+                $and: [
+                    sequelize.where(
+                        sequelize.fn('DATE', sequelize.col('created_at')),
+                        sequelize.literal('CURRENT_DATE'),
+                    )
+                ]
+            }
+        }).then(function (dbFood) {
             res.json(dbFood);
         }).catch(function (err) {
             res.json(err);
@@ -26,31 +37,26 @@ module.exports = function (app) {
         });
     });
 
-    // PUT route for updating food
-    app.put("/api/foods/:id", function (req, res) {
-        db.Food.update({
-            name: req.body.name,
-            calories: req.body.calories,
-            time: req.body.time
-        }, {
+    // GET route to get all exercises
+    app.post("/api/exercises/current", function (req, res) {
+        db.Exercise.findAll({
             where: {
-                id: req.body.id
+                date: req.body.created_at
             }
-        }).then(function (dbFood) {
-            res.json(dbFood);
+        }).then(function (dbExercise) {
+            res.json(dbExercise);
         }).catch(function (err) {
             res.json(err);
         });
     });
 
-    // DELETE route for deleting food
-    app.delete("/api/foods/:id", function (req, res) {
-        db.Food.destroy({
-            where: {
-                id: req.body.id
-            }
-        }).then(function (dbFood) {
-            res.json(dbFood);
+    // POST route for creating new exercise
+    app.post("/api/exercises", function (req, res) {
+        db.Exercise.create({
+            name: req.body.name,
+            calories: req.body.calories
+        }).then(function (dbExercise) {
+            res.json(dbExercise);
         }).catch(function (err) {
             res.json(err);
         });
