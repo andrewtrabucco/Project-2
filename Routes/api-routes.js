@@ -1,21 +1,21 @@
 // Require models
 let db = require("../models");
 
-const sequelize = require('sequelize');
+const moment = require('moment');
+const { Op } = require("sequelize");
 
 // Routes
 module.exports = function (app) {
 
     // GET route to get all foods
     app.get("/api/foods/current", function (req, res) {
+        let today = moment().format('YYYY-MM-DD');
+        let tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
         db.Food.findAll({
             where: {
-                $and: [
-                    sequelize.where(
-                        sequelize.fn('DATE', sequelize.col('created_at')),
-                        sequelize.literal('CURRENT_DATE'),
-                    )
-                ]
+                createdAt: {
+                    [Op.between]: [new Date(today), new Date(tomorrow)]
+                }
             }
         }).then(function (dbFood) {
             res.json(dbFood);
@@ -39,9 +39,13 @@ module.exports = function (app) {
 
     // GET route to get all exercises
     app.post("/api/exercises/current", function (req, res) {
+        let today = moment().format('YYYY-MM-DD');
+        let tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
         db.Exercise.findAll({
             where: {
-                date: req.body.created_at
+                createdAt: {
+                    [Op.between]: [new Date(today), new Date(tomorrow)]
+                }
             }
         }).then(function (dbExercise) {
             res.json(dbExercise);
