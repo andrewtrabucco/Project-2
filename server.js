@@ -1,9 +1,20 @@
 // Require Express 
 let express = require("express");
+<<<<<<< HEAD
 
 let PORT = process.env.PORT || 8080;
 
 let app = express();
+
+var db = require("./models")
+
+
+=======
+
+let PORT = process.env.PORT || 8080;
+
+let app = express();
+>>>>>>> main
 
 // Serve static content for the app from the "public" directory in the application directory
 app.use(express.static("public"));
@@ -23,10 +34,16 @@ let routes = require("./controllers/calorieController.js");
 require("./Routes/html-routes.js")(app);
 require("./Routes/api-routes.js")(app);
 
-app.use(routes);
 
+<<<<<<< HEAD
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+=======
 // Start our server so that it can begin listening to client requests
 app.listen(PORT, function() {
   // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
+>>>>>>> main
 });
