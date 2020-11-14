@@ -25,7 +25,16 @@ $("#customButton").on("click", function (event) {
     var foodItem = {}
     foodItem.name = $("#customFoodTextEntry").val();
     foodItem.calories = $("#enterCustomCalories").val();
+    
+    $.post("api/foods",foodItem).then(function(response) {
+        console.log(response);
+    });
+});
 
+$("#caloriesBurnedButton").on("click", function(event) {
+    var burnedCalories = {}
+    burnedCalories.calories = $("#enterBurnedCalories").val();
+    
     $.ajax({
         url: "/api/foods",
         method: "POST"
