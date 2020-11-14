@@ -43,3 +43,15 @@ $("#caloriesBurnedButton").on("click", function(event) {
         console.log(response);
     });
 });
+
+$("#caloriesBurnedButton").on("click", function(event) {
+    var burnedCalories = {}
+    burnedCalories.calories = $("#enterBurnedCalories").val();
+    
+    $.ajax({
+        url: "/api/foods",
+        method: "POST"
+    }).then(function(response) {
+        console.log(response);
+    });
+});

@@ -5,8 +5,11 @@ module.exports = function (app) {
         res.render("index");
     });
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> main
 
 //     app.get("/calendar", function (req, res) {
 //         res.send("this will be the calendar");
