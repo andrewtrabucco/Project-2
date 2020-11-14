@@ -32,11 +32,6 @@ $("#customButton").on("click", function(event) {
     });
 });
 
-<<<<<<< Updated upstream
-
-
-
-=======
 $("#caloriesBurnedButton").on("click", function(event) {
     var burnedCalories = {}
     burnedCalories.calories = $("#enterBurnedCalories").val();
@@ -48,4 +43,3 @@ $("#caloriesBurnedButton").on("click", function(event) {
         console.log(response);
     });
 });
->>>>>>> Stashed changes
