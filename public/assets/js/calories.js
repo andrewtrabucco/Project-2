@@ -69,4 +69,26 @@ $("#caloriesBurnedButton").on("click", function (event) {
 });
 
 
+$("#Date").html("<h2" + "(" + moment().format('l') + ")" + " " + "</h2>");
+// $("#moment").text("Date: " + moment.now(Date)) {
+//     // var moment = {}
+//     moment.calories = $("#moment").Date();
+    
+    // $.ajax({
+    //     url: "/models/moment",
+    //     method: "GET"
+    // }).then(function(response) {
+    //     console.log(response);
+    // });
+// };
+// $("#tempF").text("Temperature: " + Math.round(tempF) + " °F");
 
+// const moment = require('moment');
+//     let moment = {}
+//     moment.calories = $("#enterMoment").val();
+
+//     $.ajax({
+//         url: 
+//     })
+
+// console.log("Day of week: " + now.weekday());
