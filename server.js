@@ -7,7 +7,10 @@ let app = express();
 
 var db = require("./models")
 
+const moment = require('moment');
+let now = moment();
 
+console.log("Day of week: " + now.weekday());
 
 // Serve static content for the app from the "public" directory in the application directory
 app.use(express.static("public"));
@@ -27,9 +30,9 @@ let routes = require("./controllers/calorieController.js");
 require("./Routes/html-routes.js")(app);
 require("./Routes/api-routes.js")(app);
 
-
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
 });
+
