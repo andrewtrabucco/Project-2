@@ -1,6 +1,3 @@
-// let queryURL2 = "https://api.spoonacular.com/food/ingredients/search?query=" + foodID + "&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85&includeNutrition=true";
-
-
 // Search Button Functionality (Imputs text and calls searchFood function)
 $("#searchButton").on("click", function (event) {
     event.preventDefault();
@@ -23,7 +20,7 @@ $("#searchButton").on("click", function (event) {
 
         for (let i = 0; i < response.results.length; i++) {
             let li = $("<li>");
-            let button = $("<button class='button is-info'>");
+            let button = $("<button class='button is-primary'>Add Food</button>");
             li.text(response.results[i].name);
             button.attr("id", response.results[i].id);
             li.append(button);
@@ -40,7 +37,7 @@ $("#searchButton").on("click", function (event) {
                 method: "GET",
             }).then(function (id) {
                 console.log(id);
-                console.log(id.nutrition.nutrients[0]);
+                console.log(id.nutrition.nutrients[0])
             });
         });
     });
