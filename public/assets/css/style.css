@@ -1,0 +1,25 @@
+.food-button {
+    margin-left: 1%;
+    margin-top: .5%;
+}
+
+.food-list {
+    margin-top: 1%;
+}
+
+#searchButton {
+    margin-left: 1%;
+}
+
+#customButton {
+    margin-left: 1%;
+}
+
+#caloriesBurnedButton {
+    margin-left: 1%;
+}
+
+#Date {
+    margin-top: 1%;
+    margin-left: 5%;
+}
