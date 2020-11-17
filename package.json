@@ -16,7 +16,6 @@
     "moments": "0.0.2",
     "mysql": "^2.16.0",
     "mysql2": "^2.2.5",
-    "pickerjs": "^1.2.1",
     "require": "^2.4.20",
     "sequelize": "^6.3.5",
     "sequelizer": "^1.1.4"

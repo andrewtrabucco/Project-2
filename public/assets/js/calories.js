@@ -49,7 +49,14 @@ $("#customButton").on("click", function (event) {
     foodItem.name = $("#customFoodTextEntry").val();
     foodItem.calories = $("#enterCustomCalories").val();
 
+<<<<<<< HEAD
     $.post("api/foods", foodItem).then(function (response) {
+=======
+    $.ajax({
+        url: "/api/foods",
+        method: "POST"
+    }).then(function (response) {
+>>>>>>> parent of de753b9... Merge branch 'main' into Caleb-Branch
         console.log(response);
     });
 });
