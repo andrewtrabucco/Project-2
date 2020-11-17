@@ -80,6 +80,16 @@ $("#customButton").on("click", function (event) {
     var foodItem = {}
     foodItem.name = $("#customFoodTextEntry").val();
     foodItem.calories = $("#enterCustomCalories").val();
+    $("#caloriesIn").val("");
+
+    let totalCalories = [];
+    totalCalories.push(foodItem.calories);
+    for (let i = 0; i < totalCalories.length; i++) {
+        totalCalories.reduce(function (a, b) {
+            return (a + b), 0;
+        });
+        $("#caloriesIn").append(totalCalories);
+    }
 
     $.post("api/foods", foodItem).then(function (response) {
         $.ajax({
