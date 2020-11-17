@@ -18,7 +18,7 @@ $(document).ready(function () {
 // Search Button Functionality (Imputs text and calls searchFood function)
 $("#searchButton").on("click", function (event) {
     event.preventDefault();
-
+    $(".food-list").empty();
     let food = $("#foodTextEntry").val().trim();
 
     // console.log(food);
