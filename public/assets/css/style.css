@@ -1,6 +1,7 @@
 .food-button {
     margin-left: 1%;
-    margin-top: .5%;
+    margin-top: .1%;
+    margin-bottom: .1%;
 }
 
 .food-list {
@@ -22,4 +23,16 @@
 #Date {
     margin-top: 1%;
     margin-left: 5%;
+}
+
+#foodTextEntry {
+    margin-left: 1%;
+}
+
+#customFoodTextEntry {
+    margin-left: 1%;
+}
+
+#enterCustomCalories {
+    margin-left: 1%;
 }

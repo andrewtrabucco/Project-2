@@ -41,6 +41,7 @@ $("#searchButton").on("click", function (event) {
         }
         $(".food-button").on("click", function (event) {
             event.preventDefault();
+            $("#caloriesIn").val("");
             let foodId = $(event.target).attr("id");
             let queryURLtwo = "https://api.spoonacular.com/food/ingredients/" + foodId + "/information?amount=1&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85&includeNutrition=true"
 
@@ -56,6 +57,15 @@ $("#searchButton").on("click", function (event) {
                 foodChosen.calories = (id.nutrition.nutrients[0].amount);
                 console.log(id.name);
                 console.log(id.nutrition.nutrients[0].amount);
+
+                let totalCalories = [];
+                totalCalories.push(foodChosen.calories);
+                for (let i = 0; i < totalCalories.length; i++) {
+                    totalCalories.reduce(function (a, b) {
+                        return (a + b), 0;
+                    });
+                    $("#caloriesIn").append(totalCalories);
+                }
 
                 $.post("api/foods", foodChosen).then(function (response) {
                     console.log(response);
@@ -86,6 +96,18 @@ $("#customButton").on("click", function (event) {
 $("#caloriesBurnedButton").on("click", function (event) {
     var burnedCalories = {}
     burnedCalories.calories = $("#enterBurnedCalories").val();
+    $("#caloriesOut").val("");
+
+
+    let totalBurnedCalories = [];
+    totalBurnedCalories.push(burnedCalories.calories);
+    for (let i = 0; i < totalBurnedCalories.length; i++) {
+        totalBurnedCalories.reduce(function (a, b) {
+            return (a + b), 0;
+        });
+        $("#caloriesOut").append(totalBurnedCalories);
+    }
+
     $.post("api/exercise", burnedCalories).then(function (response) {
         console.log(response);
     });
