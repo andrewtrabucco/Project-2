@@ -44,37 +44,7 @@ $(document).ready(function () {
         li.append(button);
         $(".food-list").append(li);
       }
-      $(".button").on("click", function (event) {
-        event.preventDefault();
-        let foodId = $(event.target).attr("id");
-        let queryURLtwo =
-          "https://api.spoonacular.com/food/ingredients/" +
-          foodId +
-          "/information?amount=1&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85&includeNutrition=true";
-
-        $.ajax({
-          url: queryURLtwo,
-          method: "GET",
-        }).then(function (id) {
-          console.log(id);
-          console.log(id.nutrition.nutrients[0]);
-          
-        console.log(response);
-        // console.log(response.results[0]);
-        // console.log(response.results[0].name);
-        // console.log(response.results[0].id);
-        // console.log(response.results[0].image);
-
-
-        for (let i = 0; i < response.results.length; i++) {
-            let li = $("<li>");
-            let button = $("<button class='food-button button is-primary'>Add Food</button>");
-            li.text(response.results[i].name);
-            button.attr("id", response.results[i].id);
-            li.append(button);
-            $(".food-list").append(li);
-            
-        }
+     
         $(".food-button").on("click", function (event) {
             event.preventDefault();
             let foodId = $(event.target).attr("id");
@@ -120,6 +90,7 @@ $(document).ready(function () {
       method: "POST",
     }).then(function (response) {
       console.log(response);
+    })
 
 $("#caloriesBurnedButton").on("click", function (event) {
     var burnedCalories = {}
@@ -130,21 +101,4 @@ $("#caloriesBurnedButton").on("click", function (event) {
     });
   });
 
-
-
-  //     $.ajax({
-  //         url: "/models/moment",
-  //         method: "GET"
-  //     }).then(function(response) {
-  //         console.log(response);
-  //     });
-  // }
-
-  // const moment = require('moment');
-  //     let moment = {}
-  //     moment.calories = $("#enterMoment").val();
-
-  //     $.ajax({
-  //         url:
-  //     })
 });
