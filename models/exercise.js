@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
-    let Food = sequelize.define("Food", {
+    let Exercise = sequelize.define("Exercise", {
         name: DataTypes.STRING,
         calories: DataTypes.INTEGER,
     });
-    return Food;
+    return Exercise;
 };
