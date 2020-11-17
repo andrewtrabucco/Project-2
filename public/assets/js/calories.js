@@ -21,7 +21,7 @@ $("#searchButton").on("click", function (event) {
 
         for (let i = 0; i < response.results.length; i++) {
             let li = $("<li>");
-            let button = $("<button class='button is-info'>");
+            let button = $("<button class='button is-primary'>Add Food</button>");
             li.text(response.results[i].name);
             button.attr("id", response.results[i].id);
             li.append(button);
@@ -38,7 +38,7 @@ $("#searchButton").on("click", function (event) {
                 method: "GET",
             }).then(function (id) {
                 console.log(id);
-                console.log(id.nutrition.nutrients[0]);
+                console.log(id.nutrition.nutrients[0])
             });
         });
     });
