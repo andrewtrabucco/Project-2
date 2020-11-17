@@ -62,6 +62,7 @@ $("#searchButton").on("click", function (event) {
             });
         });
     });
+    $("#foodTextEntry").val("");
 });
 
 $("#customButton").on("click", function (event) {
@@ -77,6 +78,8 @@ $("#customButton").on("click", function (event) {
             console.log(response);
         });
     });
+    $("#customFoodTextEntry").val("");
+    $("#enterCustomCalories").val("");
 });
 
 $("#caloriesBurnedButton").on("click", function (event) {
@@ -85,4 +88,6 @@ $("#caloriesBurnedButton").on("click", function (event) {
     $.post("api/exercise", burnedCalories).then(function (response) {
         console.log(response);
     });
+    $("#enterBurnedCalories").val("");
 });
+
