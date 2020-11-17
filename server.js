@@ -5,16 +5,13 @@ let PORT = process.env.PORT || 8080;
 
 let app = express();
 
-<<<<<<< HEAD
-var db = require("./models")
+let db = require("./models")
 
 const moment = require('moment');
 let now = moment();
 
 console.log("Day of week: " + now.weekday());
 
-=======
->>>>>>> parent of de753b9... Merge branch 'main' into Caleb-Branch
 // Serve static content for the app from the "public" directory in the application directory
 app.use(express.static("public"));
 
