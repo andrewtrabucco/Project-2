@@ -1,3 +1,18 @@
+$(document).ready(function () {
+    function todaysDate() {
+      var d = new Date();
+      var weekday = new Array(7);
+      weekday[0] = "Sunday";
+      weekday[1] = "Monday";
+      weekday[2] = "Tuesday";
+      weekday[3] = "Wednesday";
+      weekday[4] = "Thursday";
+      weekday[5] = "Friday";
+      weekday[6] = "Saturday";
+      var n = weekday[d.getDay()];
+      document.getElementById("Date").innerHTML = n;
+    }
+    todaysDate();
 
 // Search Button Functionality (Imputs text and calls searchFood function)
 $("#searchButton").on("click", function (event) {
@@ -72,7 +87,7 @@ $("#customButton").on("click", function (event) {
 
 $("#caloriesBurnedButton").on("click", function (event) {
     var burnedCalories = {}
-    burnedCalories.calories = $("#enterCaloriesBurned").val();
+    burnedCalories.calories = $("#enterBurnedCalories").val();
     $.post("api/exercise", burnedCalories).then(function (response)    {
         console.log(response);
     });
@@ -81,26 +96,4 @@ $("#caloriesBurnedButton").on("click", function (event) {
 
 
 
-$("#Date").html("<h2" + "(" + moment().format('l') + ")" + " " + "</h2>");
-// $("#moment").text("Date: " + moment.now(Date)) {
-//     // var moment = {}
-//     moment.calories = $("#moment").Date();
-    
-    // $.ajax({
-    //     url: "/models/moment",
-    //     method: "GET"
-    // }).then(function(response) {
-    //     console.log(response);
-    // });
-// };
-// $("#tempF").text("Temperature: " + Math.round(tempF) + " °F");
-
-// const moment = require('moment');
-//     let moment = {}
-//     moment.calories = $("#enterMoment").val();
-
-//     $.ajax({
-//         url: 
-//     })
-
-// console.log("Day of week: " + now.weekday());
+})
