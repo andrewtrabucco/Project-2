@@ -38,7 +38,7 @@ module.exports = function (app) {
     });
 
     // GET route to get all exercises
-    app.post("/api/exercises/current", function (req, res) {
+    app.post("/api/exercise/current", function (req, res) {
         let today = moment().format('YYYY-MM-DD');
         let tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
         db.Exercise.findAll({
@@ -55,7 +55,7 @@ module.exports = function (app) {
     });
 
     // POST route for creating new exercise
-    app.post("/api/exercises", function (req, res) {
+    app.post("/api/exercise", function (req, res) {
         db.Exercise.create({
             name: req.body.name,
             calories: req.body.calories
