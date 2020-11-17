@@ -1,6 +1,6 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     let moment = sequelize.define("moment", {
-      name: DataTypes.STRING,
+        name: DataTypes.STRING,
     });
     return moment;
-  };
+};
