@@ -30,6 +30,7 @@ let routes = require("./controllers/calorieController.js");
 require("./Routes/html-routes.js")(app);
 require("./Routes/api-routes.js")(app);
 
+// Start our server so that it can begin listening to client requests
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);

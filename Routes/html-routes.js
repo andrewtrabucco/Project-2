@@ -6,7 +6,3 @@ module.exports = function (app) {
     });
 }
 
-//     app.get("/calendar", function (req, res) {
-//         res.send("this will be the calendar");
-//     });
-// }
