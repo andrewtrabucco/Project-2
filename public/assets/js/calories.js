@@ -1,5 +1,7 @@
 let totalCalories = [];
 let totalBurnedCalories = [];
+let caloriesIn = $("#caloriesIn");
+let caloriesOut = $("#caloriesOut");
 
 $(document).ready(function () {
     function todaysDate() {
@@ -45,7 +47,6 @@ $("#searchButton").on("click", function (event) {
 
         $(".food-button").on("click", function (event) {
             event.preventDefault();
-            $("#caloriesIn").val("");
             let foodId = $(event.target).attr("id");
             let queryURLtwo = "https://api.spoonacular.com/food/ingredients/" + foodId + "/information?amount=1&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85&includeNutrition=true";
 
@@ -64,9 +65,10 @@ $("#searchButton").on("click", function (event) {
 
 
                 totalCalories.push(parseInt(foodChosen.calories));
-                $("#caloriesIn").text(totalCalories.reduce((a, b) => a + b, 0));
+                $("#progressIn").attr("value", totalCalories);
+                caloriesIn.text(totalCalories.reduce((a, b) => a + b, 0));
 
-                
+
                 $.post("api/foods", foodChosen).then(function (response) {
                     console.log(response);
                 });
@@ -84,7 +86,8 @@ $("#customButton").on("click", function (event) {
 
 
     totalCalories.push(foodItem.calories);
-    $("#caloriesIn").text(totalCalories.reduce((a, b) => a + b, 0));
+    $("#progressIn").attr("value", totalCalories);
+    caloriesIn.text(totalCalories.reduce((a, b) => a + b, 0));
 
 
     $.post("api/foods", foodItem).then(function (response) {
@@ -106,7 +109,8 @@ $("#caloriesBurnedButton").on("click", function (event) {
 
 
     totalBurnedCalories.push(burnedCalories.calories);
-    $("#caloriesOut").text(totalBurnedCalories.reduce((a, b) => a + b, 0));
+    $("#progressOut").attr("value", totalBurnedCalories);
+    caloriesOut.text(totalBurnedCalories.reduce((a, b) => a + b, 0));
 
 
     $.post("api/exercise", burnedCalories).then(function (response) {
