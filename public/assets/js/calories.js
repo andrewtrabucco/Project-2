@@ -5,8 +5,8 @@ let caloriesOut = $("#caloriesOut");
 
 $(document).ready(function () {
     function todaysDate() {
-        var d = new Date();
-        var weekday = new Array(7);
+        let d = new Date();
+        let weekday = new Array(7);
         weekday[0] = "Sunday";
         weekday[1] = "Monday";
         weekday[2] = "Tuesday";
@@ -14,7 +14,7 @@ $(document).ready(function () {
         weekday[4] = "Thursday";
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
-        var n = weekday[d.getDay()];
+        let n = weekday[d.getDay()];
         document.getElementById("Date").innerHTML = n;
     }
     todaysDate();
@@ -36,7 +36,7 @@ $("#searchButton").on("click", function (event) {
     }).then(function (response) {
         console.log(response);
 
-        for (let i = 0; i < response.results.length; i++) {
+        for (var i = 0; i < response.results.length; i++) {
             let li = $("<li>");
             let button = $("<button class='food-button button is-primary'>Add Food</button>");
             li.text(response.results[i].name);
@@ -65,7 +65,7 @@ $("#searchButton").on("click", function (event) {
 
 
                 totalCalories.push(parseInt(foodChosen.calories));
-                $("#progressIn").attr("value", totalCalories);
+                $("#progressIn").attr("value", totalCalories.reduce((a, b) => a + b, 0));
                 caloriesIn.text(totalCalories.reduce((a, b) => a + b, 0));
 
 
@@ -80,13 +80,13 @@ $("#searchButton").on("click", function (event) {
 
 
 $("#customButton").on("click", function (event) {
-    var foodItem = {}
+    let foodItem = {}
     foodItem.name = $("#customFoodTextEntry").val();
     foodItem.calories = parseInt($("#enterCustomCalories").val());
 
 
     totalCalories.push(foodItem.calories);
-    $("#progressIn").attr("value", totalCalories);
+    $("#progressIn").attr("value", totalCalories.reduce((a, b) => a + b, 0));
     caloriesIn.text(totalCalories.reduce((a, b) => a + b, 0));
 
 
@@ -104,12 +104,12 @@ $("#customButton").on("click", function (event) {
 
 
 $("#caloriesBurnedButton").on("click", function (event) {
-    var burnedCalories = {}
+    let burnedCalories = {}
     burnedCalories.calories = parseInt($("#enterBurnedCalories").val());
 
 
     totalBurnedCalories.push(burnedCalories.calories);
-    $("#progressOut").attr("value", totalBurnedCalories);
+    $("#progressOut").attr("value", totalBurnedCalories.reduce((a, b) => a + b, 0));
     caloriesOut.text(totalBurnedCalories.reduce((a, b) => a + b, 0));
 
 
