@@ -1,3 +1,8 @@
+let totalCalories = [];
+let totalBurnedCalories = [];
+let caloriesIn = $("#caloriesIn");
+let caloriesOut = $("#caloriesOut");
+
 $(document).ready(function () {
     function todaysDate() {
         var d = new Date();
@@ -13,7 +18,7 @@ $(document).ready(function () {
         document.getElementById("Date").innerHTML = n;
     }
     todaysDate();
-})
+});
 
 // Search Button Functionality (Imputs text and calls searchFood function)
 $("#searchButton").on("click", function (event) {
@@ -39,11 +44,11 @@ $("#searchButton").on("click", function (event) {
             li.append(button);
             $(".food-list").append(li);
         }
+
         $(".food-button").on("click", function (event) {
             event.preventDefault();
-            $("#caloriesIn").val("");
             let foodId = $(event.target).attr("id");
-            let queryURLtwo = "https://api.spoonacular.com/food/ingredients/" + foodId + "/information?amount=1&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85&includeNutrition=true"
+            let queryURLtwo = "https://api.spoonacular.com/food/ingredients/" + foodId + "/information?amount=1&apiKey=c1efb5fd0f5141858fc5b5f6a6b5ab85&includeNutrition=true";
 
             $.ajax({
                 url: queryURLtwo,
@@ -58,14 +63,11 @@ $("#searchButton").on("click", function (event) {
                 console.log(id.name);
                 console.log(id.nutrition.nutrients[0].amount);
 
-                let totalCalories = [];
-                totalCalories.push(foodChosen.calories);
-                for (let i = 0; i < totalCalories.length; i++) {
-                    totalCalories.reduce(function (a, b) {
-                        return (a + b), 0;
-                    });
-                    $("#caloriesIn").append(totalCalories);
-                }
+
+                totalCalories.push(parseInt(foodChosen.calories));
+                $("#progressIn").attr("value", totalCalories);
+                caloriesIn.text(totalCalories.reduce((a, b) => a + b, 0));
+
 
                 $.post("api/foods", foodChosen).then(function (response) {
                     console.log(response);
@@ -76,20 +78,17 @@ $("#searchButton").on("click", function (event) {
     $("#foodTextEntry").val("");
 });
 
+
 $("#customButton").on("click", function (event) {
     var foodItem = {}
     foodItem.name = $("#customFoodTextEntry").val();
-    foodItem.calories = $("#enterCustomCalories").val();
-    $("#caloriesIn").val("");
+    foodItem.calories = parseInt($("#enterCustomCalories").val());
 
-    let totalCalories = [];
+
     totalCalories.push(foodItem.calories);
-    for (let i = 0; i < totalCalories.length; i++) {
-        totalCalories.reduce(function (a, b) {
-            return (a + b), 0;
-        });
-        $("#caloriesIn").append(totalCalories);
-    }
+    $("#progressIn").attr("value", totalCalories);
+    caloriesIn.text(totalCalories.reduce((a, b) => a + b, 0));
+
 
     $.post("api/foods", foodItem).then(function (response) {
         $.ajax({
@@ -103,20 +102,16 @@ $("#customButton").on("click", function (event) {
     $("#enterCustomCalories").val("");
 });
 
+
 $("#caloriesBurnedButton").on("click", function (event) {
     var burnedCalories = {}
-    burnedCalories.calories = $("#enterBurnedCalories").val();
-    $("#caloriesOut").val("");
+    burnedCalories.calories = parseInt($("#enterBurnedCalories").val());
 
 
-    let totalBurnedCalories = [];
     totalBurnedCalories.push(burnedCalories.calories);
-    for (let i = 0; i < totalBurnedCalories.length; i++) {
-        totalBurnedCalories.reduce(function (a, b) {
-            return (a + b), 0;
-        });
-        $("#caloriesOut").append(totalBurnedCalories);
-    }
+    $("#progressOut").attr("value", totalBurnedCalories);
+    caloriesOut.text(totalBurnedCalories.reduce((a, b) => a + b, 0));
+
 
     $.post("api/exercise", burnedCalories).then(function (response) {
         console.log(response);
